@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Madata Authentication Provider</title>
+	</head>
+	<body>
+		<h1>Madata Authentication Provider</h1>
+		<p>Are you sure you want to login with <span id="backend"></span> on <a id="url"></a>?</p>
+		<footer class="buttons">
+			<button class="yes">Yes, log in</button>
+			<button class="no">No, I don’t recognize this site</button>
+		</footer>
+	</body>
+
+	<script>
+		(async () => {
+			const params = new URLSearchParams(location.search);
+
+			if (!params.has("state")) {
+				document.body.textContent = "This page is not meant to be visited directly.";
+				return;
+			}
+
+			const state = JSON.parse(params.get("state"));
+			const url = state.url;
+			const backend = state.backend;
+
+			const code = params.get("code");
+
+			if (!backend || !url || !code) {
+				document.body.textContent = "The URL you provided is invalid. You can't be authenticated!";
+				return;
+			}
+
+			const appURL = document.querySelector("#url");
+			appURL.textContent = url;
+			appURL.href = url;
+
+			const backendName = document.querySelector("#backend");
+			backendName.textContent = backend;
+
+			const response = await fetch("/.netlify/functions/auth", {
+				method: "POST",
+				body: JSON.stringify({ backend, code, redirectURI: params.get("redirect_uri") })
+			});
+			const json = await response.json();
+
+			const yesButton = document.querySelector("button.yes");
+			yesButton.addEventListener("click", async () => {
+				const token = json.token;
+
+				if (!token) {
+					throw new Error("We could not obtain an access token!");
+				} else {
+					opener.postMessage({ backend, token }, url);
+				}
+
+				window.close();
+			});
+
+			const noButton = document.querySelector("button.no");
+			noButton.addEventListener("click", async () => {
+				window.close();
+			});
+		})();
+	</script>
+</html>
