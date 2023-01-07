@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DmitrySharabin/netlify-functions-auth/issues"
   },
-  "homepage": "https://github.com/DmitrySharabin/netlify-functions-auth#readme"
+  "homepage": "https://github.com/DmitrySharabin/netlify-functions-auth#readme",
+  "devDependencies": {
+    "node-fetch": "^3.3.0"
+  }
 }
