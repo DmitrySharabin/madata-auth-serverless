@@ -2,38 +2,52 @@ import { headers } from "../../headers.mjs";
 import fetch from "node-fetch";
 
 export async function handler(event) {
-	const { backend, redirect_uri, code } = JSON.parse(event.body);
+	const { backend, code, redirectURI } = JSON.parse(event.body);
 
 	let info = ["id", "secret", "url", "fields"].map(i => [i, process.env[`${backend}_${i}`.toUpperCase()]]);
 	info = Object.fromEntries(info);
 
 	const url = new URL(info.url);
 	const params = new URLSearchParams(info.fields);
+	params.set("code", code);
 	params.set("client_id", info.id);
 	params.set("client_secret", info.secret);
-	params.set("code", code);
-	params.set("redirect_uri", redirect_uri ?? "https://auth-madata.netlify.app");
+	params.set("redirect_uri", redirectURI ?? process.env.URL);
 
-	url.search = params.toString();
+	url.search = "?" + params.toString();
 
 	const response = await fetch(url.href, {
 		method: "POST"
 	});
 
+	if (!response.ok) {
+		console.error(`We got an error ${response.status} while obtaining an access token: ${response.statusText}`);
+		return {
+			statusCode: 400,
+			headers,
+			body: JSON.stringify({ message: response.statusText })
+		};
+	}
+
 	let token;
 	if (backend === "Github") {
 		token = (await response.text()).match(/access_token=(\w+)/)[1];
-	} else {
+	} else if (backend === "Google") {
 		token = (await response.json())["access_token"];
 	}
 
-	if (!response.ok) {
-		console.error("We got an error", response.status);
+	if (!token) {
+		console.error("We could not obtain an access token!");
+		return {
+			statusCode: 404,
+			headers,
+			body: JSON.stringify({ message: "We could not obtain an access token!" })
+		};
 	}
 
 	return {
 		statusCode: 200,
 		headers,
-		body: JSON.stringify({ message: "You are authenticated successfully!", token })
+		body: JSON.stringify({ message: "You have been authenticated successfully!", token })
 	};
 }
