@@ -1,5 +1,10 @@
-import { headers } from "../../headers.mjs";
 import fetch from "node-fetch";
+
+const headers = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Headers": "Content-Type",
+	"Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+};
 
 export async function handler(event) {
 	const { backend, code, redirectURI } = JSON.parse(event.body);
