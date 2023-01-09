@@ -5,6 +5,7 @@ html {
 }
 
 body {
+	max-width: 85vw;
 	max-inline-size: 85vw;
 	box-sizing: border-box;
 	margin: auto;
