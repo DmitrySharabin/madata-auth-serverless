@@ -9,16 +9,19 @@ const headers = {
 const backends = {
 	Github: {
 		id: "b28e2d03c956b3749798",
+		secret: "",
 		url: "https://github.com/login/oauth/access_token",
 		fields: ""
 	},
 	Google: {
 		id: "380712995757-4e9augrln1ck0soj8qgou0b4tnr30o42.apps.googleusercontent.com",
+		secret: "",
 		url: "https://oauth2.googleapis.com/token",
 		fields: "grant_type=authorization_code"
 	},
 	Dropbox: {
 		id: "2mx6061p054bpbp",
+		secret: "",
 		url: "https://api.dropboxapi.com/oauth2/token",
 		fields: "grant_type=authorization_code"
 	}
@@ -28,13 +31,12 @@ export async function handler(event) {
 	const { backend, code, redirectURI } = JSON.parse(event.body);
 
 	const info = backends[backend];
-	info.secret = process.env[`${backend}_secret`.toUpperCase()];
 
 	const url = new URL(info.url);
 	const params = new URLSearchParams(info.fields);
 	params.set("code", code);
 	params.set("client_id", info.id);
-	params.set("client_secret", info.secret);
+	params.set("client_secret", info.secret || process.env[`${backend}_secret`.toUpperCase()]);
 	params.set("redirect_uri", redirectURI ?? process.env.URL);
 
 	url.search = "?" + params.toString();
