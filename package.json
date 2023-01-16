@@ -1,21 +1,22 @@
 {
-  "name": "netlify-functions-auth",
+  "name": "madata-auth-serverless",
   "version": "0.0.1",
-  "description": "Madata authentication server",
+  "description": "Madata authentication provider",
   "main": "public/index.html",
   "scripts": {
+    "build": "node build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DmitrySharabin/madata-auth-serverless.git"
+    "url": "git+https://github.com/madatajs/madata-auth-serverless.git"
   },
   "author": "Dmitry Sharabin <dmitrysharabin@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DmitrySharabin/madata-auth-serverless/issues"
+    "url": "https://github.com/madatajs/madata-auth-serverless/issues"
   },
-  "homepage": "https://github.com/DmitrySharabin/madata-auth-serverless#readme",
+  "homepage": "https://github.com/madatajs/madata-auth-serverless#readme",
   "devDependencies": {
     "node-fetch": "^3.3.0"
   }

@@ -1,0 +1,13 @@
+{
+	"Github": {
+		"url": "https://github.com/login/oauth/access_token"
+	},
+	"Google": {
+		"url": "https://oauth2.googleapis.com/token",
+		"fields": "grant_type=authorization_code"
+	},
+	"Dropbox": {
+		"url": "https://api.dropboxapi.com/oauth2/token",
+		"fields": "grant_type=authorization_code"
+	}
+}

@@ -1,4 +1,14 @@
 [build]
-  command = "# no build command"
+  command = "npm run build"
   functions = "functions"
   publish = "public"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[redirects]]
+  from = "/services"
+  to = "/services.json"
+  status = 200

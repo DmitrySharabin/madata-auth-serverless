@@ -9,11 +9,14 @@
 	</head>
 	<body>
 		<h1>Madata Authentication Provider</h1>
-		<p>Are you sure you want to login with <span id="backend"></span> on <a id="url"></a>?</p>
-		<footer class="buttons">
-			<button class="yes">Yes, log in</button>
-			<button class="no">No, I don’t recognize this site</button>
-		</footer>
+		<p class="info" hidden>You can find a list of supported backends in <a href="/services">services.json</a>.</p>
+		<div class="auth">
+			<p>Are you sure you want to login with <span id="backend"></span> on <a id="url"></a>?</p>
+			<footer class="buttons">
+				<button class="yes">Yes, log in</button>
+				<button class="no">No, I don’t recognize this site</button>
+			</footer>
+		</div>
 	</body>
 
 	<script>
@@ -21,7 +24,8 @@
 			const params = new URLSearchParams(location.search);
 
 			if (!params.has("state")) {
-				document.body.textContent = "This page is not meant to be visited directly.";
+				document.querySelector(".auth").remove();
+				document.querySelector(".info").removeAttribute("hidden");
 				return;
 			}
 

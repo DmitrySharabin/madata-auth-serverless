@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
-import { backends } from "../backends.mjs";
+import * as backends from "../backends.json";
+import * as keys from "../_keys.json";
 
 const headers = {
 	"Access-Control-Allow-Origin": "*",
@@ -11,9 +12,9 @@ const headers = {
 export async function handler(event) {
 	const { backend, code, redirectURI } = JSON.parse(event.body);
 
-	const info = backends[backend];
+	const info = { ...backends[backend], ...keys[backend] };
 
-	if (!info) {
+	if (!info.url || !info.client_id || !info.client_secret) {
 		console.error(`We don't support the ${backend} backend!`);
 		return {
 			statusCode: 404,
@@ -23,10 +24,10 @@ export async function handler(event) {
 	}
 
 	const url = new URL(info.url);
-	const params = new URLSearchParams(info.fields);
+	const params = new URLSearchParams(info.fields ?? "");
 	params.set("code", code);
-	params.set("client_id", info.id);
-	params.set("client_secret", info.secret || process.env[`${backend}_secret`.toUpperCase()]);
+	params.set("client_id", info.client_id);
+	params.set("client_secret", info.client_secret);
 	params.set("redirect_uri", redirectURI ?? process.env.URL);
 
 	url.search = "?" + params.toString();
@@ -47,7 +48,7 @@ export async function handler(event) {
 	let token;
 	if (backend === "Github") {
 		token = (await response.text()).match(/access_token=(\w+)/)[1];
-	} else if (backend === "Google") {
+	} else {
 		token = (await response.json())["access_token"];
 	}
 
