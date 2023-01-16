@@ -1,7 +1,7 @@
 {
-  "name": "netlify-functions-auth",
+  "name": "madata-auth-serverless",
   "version": "0.0.1",
-  "description": "Madata authentication server",
+  "description": "Madata authentication provider",
   "main": "public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
