@@ -13,6 +13,15 @@ export async function handler(event) {
 
 	const info = backends[backend];
 
+	if (!info) {
+		console.error(`We don't support the ${backend} backend!`);
+		return {
+			statusCode: 404,
+			headers,
+			body: JSON.stringify({ message: `We don't support the ${backend} backend!` })
+		};
+	}
+
 	const url = new URL(info.url);
 	const params = new URLSearchParams(info.fields);
 	params.set("code", code);
