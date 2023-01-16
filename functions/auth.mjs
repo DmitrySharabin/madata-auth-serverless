@@ -12,7 +12,7 @@ const headers = {
 export async function handler(event) {
 	const { backend, code, redirectURI } = JSON.parse(event.body);
 
-	const info = backends[backend];
+	const info = { ...backends[backend], ...keys[backend] };
 
 	if (!info) {
 		console.error(`We don't support the ${backend} backend!`);
@@ -26,8 +26,8 @@ export async function handler(event) {
 	const url = new URL(info.url);
 	const params = new URLSearchParams(info.fields ?? "");
 	params.set("code", code);
-	params.set("client_id", keys.client_id);
-	params.set("client_secret", keys.client_secret);
+	params.set("client_id", info.client_id);
+	params.set("client_secret", info.client_secret);
 	params.set("redirect_uri", redirectURI ?? process.env.URL);
 
 	url.search = "?" + params.toString();
