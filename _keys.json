@@ -1,0 +1,14 @@
+{
+	"Github": {
+		"client_id": "b28e2d03c956b3749798",
+		"client_secret": "6ba8d40de3174ce23a46c5b1cad98d98d5b8928a"
+	},
+	"Google": {
+		"client_id": "380712995757-4e9augrln1ck0soj8qgou0b4tnr30o42.apps.googleusercontent.com",
+		"client_secret": "vC51KGlg0Tc0PLBcEk5NlNb_"
+	},
+	"Dropbox": {
+		"client_id": "2mx6061p054bpbp",
+		"client_secret": "c6sptlrt6a2m43b"
+	}
+}

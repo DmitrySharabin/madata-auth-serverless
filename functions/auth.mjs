@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
-import { backends } from "../backends.mjs";
+import * as backends from "../backends.json";
+import * as keys from "../_keys.json";
 
 const headers = {
 	"Access-Control-Allow-Origin": "*",
@@ -23,10 +24,10 @@ export async function handler(event) {
 	}
 
 	const url = new URL(info.url);
-	const params = new URLSearchParams(info.fields);
+	const params = new URLSearchParams(info.fields ?? "");
 	params.set("code", code);
-	params.set("client_id", info.id);
-	params.set("client_secret", info.secret || process.env[`${backend}_secret`.toUpperCase()]);
+	params.set("client_id", keys.client_id);
+	params.set("client_secret", keys.client_secret);
 	params.set("redirect_uri", redirectURI ?? process.env.URL);
 
 	url.search = "?" + params.toString();
