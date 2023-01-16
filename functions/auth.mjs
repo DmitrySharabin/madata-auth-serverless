@@ -14,7 +14,7 @@ export async function handler(event) {
 
 	const info = { ...backends[backend], ...keys[backend] };
 
-	if (!info) {
+	if (!info.url || !info.client_id || !info.client_secret) {
 		console.error(`We don't support the ${backend} backend!`);
 		return {
 			statusCode: 404,
