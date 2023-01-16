@@ -45,7 +45,13 @@ export async function handler(event) {
 		};
 	}
 
-	const token = (await response.json())["access_token"];
+	let token;
+	if (backend === "Github") {
+		token = (await response.text()).match(/access_token=(\w+)/)[1];
+	} else {
+		token = (await response.json())["access_token"];
+	}
+
 	if (!token) {
 		console.error("We could not obtain an access token!");
 		return {
