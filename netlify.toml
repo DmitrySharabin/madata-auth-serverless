@@ -2,3 +2,8 @@
   command = "node build.mjs"
   functions = "functions"
   publish = "public"
+
+[[headers]]
+  for = "/services.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
