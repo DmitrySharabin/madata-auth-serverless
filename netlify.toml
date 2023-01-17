@@ -7,3 +7,8 @@
   for = "/services.json"
   [headers.values]
     Access-Control-Allow-Origin = "*"
+
+[[redirects]]
+  from = "/services"
+  to = "/services.json"
+  status = 200
