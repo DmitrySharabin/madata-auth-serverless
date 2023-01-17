@@ -1,5 +1,5 @@
 [build]
-  command = "node build.mjs"
+  command = "npm run build"
   functions = "functions"
   publish = "public"
 

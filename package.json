@@ -4,6 +4,7 @@
   "description": "Madata authentication provider",
   "main": "public/index.html",
   "scripts": {
+    "build": "node build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
