@@ -4,7 +4,7 @@
   publish = "public"
 
 [[headers]]
-  for = "/services.json"
+  for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
 
