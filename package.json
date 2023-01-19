@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DmitrySharabin/madata-auth-serverless.git"
+    "url": "git+https://github.com/madatajs/madata-auth-serverless.git"
   },
   "author": "Dmitry Sharabin <dmitrysharabin@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DmitrySharabin/madata-auth-serverless/issues"
+    "url": "https://github.com/madatajs/madata-auth-serverless/issues"
   },
-  "homepage": "https://github.com/DmitrySharabin/madata-auth-serverless#readme",
+  "homepage": "https://github.com/madatajs/madata-auth-serverless#readme",
   "devDependencies": {
     "node-fetch": "^3.3.0"
   }
