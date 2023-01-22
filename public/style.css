@@ -26,6 +26,15 @@ h1 {
 	font-size: inherit;
 }
 
+h1 a {
+	display: block;
+}
+
+body img {
+	height: 4em;
+	block-size: 4em;
+}
+
 footer {
 	display: flex;
 	gap: 1em;
