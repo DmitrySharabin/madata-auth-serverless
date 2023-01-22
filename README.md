@@ -1,1 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a597eea8-c1b5-4c35-8bac-4d88275a5521/deploy-status)](https://app.netlify.com/sites/auth-madata/deploys)
+# Madata Auth Provider - Serverless
+
+Suitable for use with [Netlify Functions](https://www.netlify.com/products/functions/) or other Serverless providers.
+To use, see [Creating your own Auth Provider](https://madata.dev/docs/advanced/) in the Madata documentation.
