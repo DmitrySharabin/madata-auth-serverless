@@ -1,5 +1,5 @@
 {
-  "name": "madata-auth-serverless",
+  "name": "auth-server-serverless",
   "version": "0.0.1",
   "description": "Madata authentication provider",
   "main": "public/index.html",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/madatajs/madata-auth-serverless.git"
+    "url": "git+https://github.com/madatajs/auth-server-serverless.git"
   },
   "author": "Dmitry Sharabin <dmitrysharabin@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/madatajs/madata-auth-serverless/issues"
+    "url": "https://github.com/madatajs/auth-server-serverless/issues"
   },
-  "homepage": "https://github.com/madatajs/madata-auth-serverless#readme",
+  "homepage": "https://github.com/madatajs/auth-server-serverless#readme",
   "devDependencies": {
     "node-fetch": "^3.3.0"
   }
