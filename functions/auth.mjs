@@ -33,7 +33,10 @@ export async function handler(event) {
 	url.search = "?" + params.toString();
 
 	const response = await fetch(url.href, {
-		method: "POST"
+		method: "POST",
+		headers: {
+			Accept: "application/json"
+		}
 	});
 
 	if (!response.ok) {
@@ -45,13 +48,7 @@ export async function handler(event) {
 		};
 	}
 
-	let token;
-	if (backend === "Github") {
-		token = (await response.text()).match(/access_token=(\w+)/)[1];
-	} else {
-		token = (await response.json())["access_token"];
-	}
-
+	const token = (await response.json())?.["access_token"];
 	if (!token) {
 		console.error("We could not obtain an access token!");
 		return {
