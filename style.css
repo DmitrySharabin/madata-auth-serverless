@@ -23,7 +23,7 @@ body:not(:has(footer)) {
 }
 
 h1 {
-	font-size: inherit;
+	font-size: 130%;
 }
 
 h1 a {
@@ -31,8 +31,53 @@ h1 a {
 }
 
 body img {
+	display: block;
+	margin: 0 auto;
 	height: 4em;
 	block-size: 4em;
+}
+
+.list {
+	list-style-type: none;
+
+	max-width: 80%;
+	max-inline-size: 80%;
+	padding: 0;
+	margin: 0.5em auto 2em;
+
+	display: grid;
+	gap: 0.5em;
+	grid-template-columns: repeat(auto-fit, minmax(4.5em, 1fr));
+}
+
+.list .backend {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2em;
+	justify-content: space-between;
+}
+
+.backend::before {
+	--size: 3em;
+
+	display: block;
+	margin: 0 auto;
+	height: var(--size);
+	block-size: var(--size);
+	aspect-ratio: 1;
+}
+
+.github::before {
+	content: url(./img/github-logo.svg);
+}
+
+.dropbox::before {
+	content: url(./img/dropbox-logo.svg);
+	--size: 3.3em;
+}
+
+.google::before {
+	content: url(./img/google-logo.svg);
 }
 
 footer {
