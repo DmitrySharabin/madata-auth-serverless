@@ -24,7 +24,7 @@ for (const backend in backends) {
 }
 
 try {
-	const data = JSON.stringify({ backends: services }, null, "\t");
+	const data = JSON.stringify(services);
 	fs.writeFileSync("./public/services.json", data, "utf8");
 } catch (error) {
 	console.error("Error writing file services.json!");
