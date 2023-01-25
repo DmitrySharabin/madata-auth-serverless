@@ -37,7 +37,7 @@ body img {
 	block-size: 4em;
 }
 
-.list {
+#backend_list {
 	list-style-type: none;
 
 	max-width: 80%;
@@ -50,34 +50,18 @@ body img {
 	grid-template-columns: repeat(auto-fit, minmax(4.5em, 1fr));
 }
 
-.list .backend {
+.backend {
 	display: flex;
 	flex-direction: column;
 	gap: 0.2em;
 	justify-content: space-between;
 }
 
-.backend::before {
-	--size: 3em;
-
+.backend img {
 	display: block;
 	margin: 0 auto;
-	height: var(--size);
-	block-size: var(--size);
+	height: 3em;
 	aspect-ratio: 1;
-}
-
-.github::before {
-	content: url(./img/github-logo.svg);
-}
-
-.dropbox::before {
-	content: url(./img/dropbox-logo.svg);
-	--size: 3.3em;
-}
-
-.google::before {
-	content: url(./img/google-logo.svg);
 }
 
 footer {

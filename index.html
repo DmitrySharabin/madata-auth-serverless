@@ -14,20 +14,25 @@
 			Madata Official Authentication Provider
 		</h1>
 
-		<div class="info" hidden>
+		<section id="supported">
 			Supported backends
-			<ul class="list"></ul>
-		</div>
+			<ul id="backend_list">
+				<li>Fetching…</li>
+			</ul>
 
-		<div class="auth" hidden>
-			<p>Are you sure you want to login with <span id="backend"></span> on <a id="url"></a>?</p>
+			<p>Want to learn more about Madata? Visit <a href="https://madata.dev">madata.dev</a>!</p>
+		</section>
+
+		<section id="auth" hidden>
+			<p>Are you sure you want to login with <span id="backend_name"></span> on <a id="url"></a>?</p>
+
 			<footer class="buttons">
-				<button class="yes">Yes, log in</button>
-				<button class="no">No, I don’t recognize this site</button>
+				<button class="yes" id="yes_button">Yes, log in</button>
+				<button class="no" id="no_button">No, I don’t recognize this site</button>
 			</footer>
-		</div>
-		<p>Want to learn more about Madata? Visit <a href="https://madata.dev">madata.dev</a>!</p>
+		</section>
+
 	</body>
 
-	<script src="script.js"></script>
+	<script src="script.js" type="module"></script>
 </html>

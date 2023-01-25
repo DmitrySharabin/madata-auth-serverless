@@ -134,6 +134,3 @@ dist
 
 # Local Netlify folder
 .netlify
-
-# Build artifacts
-public/services.json
