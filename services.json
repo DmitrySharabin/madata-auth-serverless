@@ -7,6 +7,7 @@
 	"Google": {
 		"url": "https://oauth2.googleapis.com/token",
 		"client_id": "375702642766-9n3p8i52lnkus451fojeqoreg8akss59.apps.googleusercontent.com",
+		"api_key": "AIzaSyBWd4LzYlUZ_IAv096ojIsx6nOGmYy3VB0",
 		"fields": "grant_type=authorization_code",
 		"icon": "img/google-logo.svg"
 	},
