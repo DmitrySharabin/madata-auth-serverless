@@ -136,4 +136,4 @@ dist
 .netlify
 
 # Build artifacts
-services.json
+public/services.json

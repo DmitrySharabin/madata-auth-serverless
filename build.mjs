@@ -9,10 +9,10 @@ try {
 }
 
 try {
-	const data = fs.readFileSync("./_keys.json", "utf8");
+	const data = fs.readFileSync("./keys.json", "utf8");
 	keys = JSON.parse(data);
 } catch (error) {
-	throw new Error("Error reading file _keys.json!");
+	throw new Error("Error reading file keys.json!");
 }
 
 const services = [];
@@ -25,7 +25,7 @@ for (const backend in backends) {
 
 try {
 	const data = JSON.stringify(services);
-	fs.writeFileSync("./services.json", data, "utf8");
+	fs.writeFileSync("./public/services.json", data, "utf8");
 } catch (error) {
 	console.error("Error writing file services.json!");
 }
