@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
-import * as backends from "../backends.json";
-import * as keys from "../keys.json";
+import * as backends from "../services.json";
+import * as keys from "../_secret.json";
 
 const headers = {
 	"Access-Control-Allow-Origin": "*",
