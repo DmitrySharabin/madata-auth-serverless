@@ -6,7 +6,7 @@
   "scripts": {
     "build": "",
     "init-repo": "git remote add template https://github.com/madatajs/auth-serverless.git",
-    "update-repo": "git fetch --all && git merge template/main --allow-unrelated-histories"
+    "update-repo": "git fetch --all && git merge template/main --allow-unrelated-histories --no-edit && git push origin main"
   },
   "repository": {
     "type": "git",
