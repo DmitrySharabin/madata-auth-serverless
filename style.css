@@ -84,6 +84,7 @@ button {
 	border-radius: 0.3em;
 	font: inherit;
 	font-weight: bold;
+	text-wrap: balance;
 	color: white;
 	cursor: pointer;
 	box-shadow: 0 0 hsl(0 0% 100% / 0.2) inset;
