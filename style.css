@@ -73,12 +73,13 @@ body img {
 
 footer {
 	display: flex;
-	gap: 1em;
+	flex-direction: column;
+	gap: 0.7em;
 }
 
 button {
 	flex: 1;
-	padding: 0.3em 1em;
+	padding: 0.8em 0.5em;
 	border: none;
 	border-radius: 0.3em;
 	font: inherit;
@@ -99,6 +100,13 @@ button.yes {
 
 button.no {
 	background: hsl(0 80% 45%);
+}
+
+@media screen and (min-width: 425px) {
+	footer {
+		flex-direction: row;
+		gap: 1em;
+	}
 }
 
 @media screen and (min-width: 540px) {
