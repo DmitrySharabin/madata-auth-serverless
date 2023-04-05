@@ -16,5 +16,11 @@
 		"client_id": "9rv97nkxvvdq1a3",
 		"fields": "grant_type=authorization_code",
 		"icon": "img/dropbox-logo.svg"
+	},
+	"Airtable": {
+		"url": "https://airtable.com/oauth2/v1/token",
+		"client_id": "754e8f46-9b48-4b37-93e0-3d457881bc85",
+		"fields": "grant_type=authorization_code",
+		"icon": "/img/airtable-logo.svg"
 	}
 }
